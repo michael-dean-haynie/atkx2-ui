@@ -1,0 +1,3 @@
+interface Drive {
+    // TODO: define
+}
