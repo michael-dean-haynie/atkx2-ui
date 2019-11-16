@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoalRetroComponent } from './goal-retro.component';
 
-fdescribe('GoalRetroComponent', () => {
+describe('GoalRetroComponent', () => {
     let component: GoalRetroComponent;
     let fixture: ComponentFixture<GoalRetroComponent>;
 
