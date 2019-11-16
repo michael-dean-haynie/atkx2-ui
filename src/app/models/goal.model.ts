@@ -6,7 +6,7 @@ interface Goal {
     end: Date;
     drive: Drive;
     criteriaWasMet: boolean;
-    whyCriteriaNotMet: string;
+    criteriaNotMetReason: string;
     goalWasEffective: boolean;
     retroComments: string;
 }

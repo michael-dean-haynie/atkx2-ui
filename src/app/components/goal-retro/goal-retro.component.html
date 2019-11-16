@@ -1,2 +1,25 @@
 <p>Goal Retrospective</p>
-<p>Did you meet the acceptance Criteria?</p>
+
+<form class="form" [formGroup]="goalRetroForm">
+    <p>Did you meet the acceptance criteria?</p>
+    <button type="button" (click)="setCriteriaWasMet(true)">Yes</button>
+    <button type="button" (click)="setCriteriaWasMet(false)">No</button>
+
+    <p>If you didn't meet the acceptance critera, why?</p>
+    <input
+        class="form__criteriaNotMetReason"
+        type="text"
+        formControlName="criteriaNotMetReason"
+    />
+
+    <p>Was this goal effective in making progress towards drive?</p>
+    <button type="button" (click)="setGoalWasEffective(true)">Yes</button>
+    <button type="button" (click)="setGoalWasEffective(false)">No</button>
+
+    <p>Any other comments?</p>
+    <input
+        class="form__retroComments"
+        type="text"
+        formControlName="retroComments"
+    />
+</form>
