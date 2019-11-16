@@ -1,3 +1,3 @@
-interface Drive {
+export interface Drive {
     // TODO: define
 }

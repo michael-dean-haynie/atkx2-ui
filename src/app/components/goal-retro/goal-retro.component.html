@@ -1,15 +1,32 @@
 <p>Goal Retrospective</p>
+<p>Title</p>
+<p>{{ goal?.title }}</p>
 
-<form class="form" [formGroup]="goalRetroForm">
+<p>Acceptance Criteria</p>
+<p>{{ goal?.acceptanceCriteria }}</p>
+
+<p>Description</p>
+<p>{{ goal?.description }}</p>
+
+<p>Start</p>
+<p>{{ goal?.start }}</p>
+
+<p>End</p>
+<p>{{ goal?.end }}</p>
+
+<p>Drive</p>
+<p>{{ goal?.drive }}</p>
+
+<form class="form" [formGroup]="form">
     <p>Did you meet the acceptance criteria?</p>
     <button type="button" (click)="setCriteriaWasMet(true)">Yes</button>
     <button type="button" (click)="setCriteriaWasMet(false)">No</button>
 
     <p>If you didn't meet the acceptance critera, why?</p>
     <input
-        class="form__criteriaNotMetReason"
+        class="form__criteriaNotMetReasons"
         type="text"
-        formControlName="criteriaNotMetReason"
+        formControlName="criteriaNotMetReasons"
     />
 
     <p>Was this goal effective in making progress towards drive?</p>
@@ -22,4 +39,6 @@
         type="text"
         formControlName="retroComments"
     />
+
+    <button type="button" (click)="submitForm()">Save</button>
 </form>

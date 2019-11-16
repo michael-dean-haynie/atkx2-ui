@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Goal } from 'src/app/models/goal.model';
+import { GoalService } from 'src/app/services/api/goal.service';
 
 @Component({
     selector: 'app-goal-retro',
@@ -7,23 +9,31 @@ import { FormBuilder } from '@angular/forms';
     styleUrls: ['./goal-retro.component.scss'],
 })
 export class GoalRetroComponent implements OnInit {
-    constructor(private fb: FormBuilder) {}
+    constructor(private fb: FormBuilder, private goalService: GoalService) {}
 
-    goalRetroForm = this.fb.group({
+    @Input() goalId: string;
+
+    goal: Goal;
+
+    form = this.fb.group({
         criteriaWasMet: [null],
-        criteriaNotMetReason: [''],
+        criteriaNotMetReasons: [''],
         goalWasEffective: [null],
         retroComments: [''],
     });
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.goalService.get(this.goalId).subscribe((goal: Goal) => {
+            this.goal = goal;
+        });
+    }
 
     /**
      * Set the value of the form control "criteriaWasMet"
      * @param criteriaWasMet the boolean vaule being set
      */
     setCriteriaWasMet(criteriaWasMet: boolean): void {
-        this.goalRetroForm.get('criteriaWasMet').setValue(criteriaWasMet);
+        this.form.get('criteriaWasMet').setValue(criteriaWasMet);
     }
 
     /**
@@ -31,6 +41,34 @@ export class GoalRetroComponent implements OnInit {
      * @param goalWasEffective the boolean vaule being set
      */
     setGoalWasEffective(goalWasEffective: boolean): void {
-        this.goalRetroForm.get('goalWasEffective').setValue(goalWasEffective);
+        this.form.get('goalWasEffective').setValue(goalWasEffective);
+    }
+
+    /**
+     * TODO: document
+     */
+    submitForm(): void {
+        this.mergeFormIntoModel();
+        this.goal.retroComplete = true;
+        this.goalService.put(this.goal).subscribe(
+            success => {
+                // TODO: handle success/failure
+            },
+            error => {
+                // TODO: handle error
+            }
+        );
+    }
+
+    /**
+     * TODO: document
+     */
+    private mergeFormIntoModel(): void {
+        this.goal.criteriaWasMet = this.form.get('criteriaWasMet').value;
+        this.goal.criteriaNotMetReasons = this.form.get(
+            'criteriaNotMetReasons'
+        ).value;
+        this.goal.goalWasEffective = this.form.get('goalWasEffective').value;
+        this.goal.retroComments = this.form.get('retroComments').value;
     }
 }

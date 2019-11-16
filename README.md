@@ -21,6 +21,13 @@ VS Code recomended for development. Following extensions are used:
     Publisher: Microsoft
     VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin
 
+    Name: Angular Language Service
+    Id: angular.ng-template
+    Description: Editor services for Angular templates
+    Version: 0.802.3
+    Publisher: Angular
+    VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=Angular.ng-template
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
