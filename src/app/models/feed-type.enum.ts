@@ -1,4 +1,4 @@
 export enum FeedType {
     ReadyForRetro,
-    Active,
+    InEffect,
 }
