@@ -9,18 +9,17 @@ import { GoalService } from 'src/app/services/api/goal.service';
     styleUrls: ['./goal-retro.component.scss'],
 })
 export class GoalRetroComponent implements OnInit {
-    constructor(private fb: FormBuilder, private goalService: GoalService) {}
-
     @Input() goalId: string;
 
     goal: Goal;
-
     form = this.fb.group({
         criteriaWasMet: [null],
         criteriaNotMetReasons: [''],
         goalWasEffective: [null],
         retroComments: [''],
     });
+
+    constructor(private fb: FormBuilder, private goalService: GoalService) {}
 
     ngOnInit() {
         this.goalService.get(this.goalId).subscribe((goal: Goal) => {
@@ -61,7 +60,7 @@ export class GoalRetroComponent implements OnInit {
     }
 
     /**
-     * TODO: document
+     * Update goal model from api with values from the form
      */
     private mergeFormIntoModel(): void {
         this.goal.criteriaWasMet = this.form.get('criteriaWasMet').value;

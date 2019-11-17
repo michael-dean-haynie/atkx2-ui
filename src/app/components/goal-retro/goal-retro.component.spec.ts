@@ -5,7 +5,7 @@ import { Goal } from 'src/app/models/goal.model';
 import { GoalService } from 'src/app/services/api/goal.service';
 import { GoalRetroComponent } from './goal-retro.component';
 
-fdescribe('GoalRetroComponent', () => {
+describe('GoalRetroComponent', () => {
     let component: GoalRetroComponent;
     let fixture: ComponentFixture<GoalRetroComponent>;
     let goalService: GoalService;
@@ -85,8 +85,6 @@ fdescribe('GoalRetroComponent', () => {
     });
 
     describe('submitForm', () => {
-        // handle next action
-        // handle errors
         it('should mark retro complete and update via service', () => {
             const goalFromApi: Goal = {};
             component.goal = goalFromApi;
