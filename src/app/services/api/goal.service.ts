@@ -2,12 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { FeedType } from 'src/app/models/feed-type.enum';
+import { environment } from '../../../environments/environment';
 import { Goal } from '../../models/goal.model';
 
 @Injectable({
     providedIn: 'root',
 })
 export class GoalService {
+    private apiUrl = `${environment.apiUrl}/goal`;
+
     constructor(private http: HttpClient) {}
 
     /**
@@ -15,8 +18,7 @@ export class GoalService {
      * @param id
      */
     get(id: string): Observable<Goal> {
-        // TODO: Implement
-        return of({} as Goal);
+        return this.http.get<Goal>(`${this.apiUrl}/${id}`);
     }
 
     /**
@@ -26,18 +28,7 @@ export class GoalService {
      */
     getFeed(feedType: FeedType, fetchCount): Observable<Goal[]> {
         // TODO: implement
-        return of([
-            { title: 'title1' },
-            { title: 'title2' },
-            { title: 'title3' },
-            { title: 'title4' },
-            { title: 'title5' },
-            { title: 'title6' },
-            { title: 'title7' },
-            { title: 'title8' },
-            { title: 'title9' },
-            { title: 'title10' },
-        ]);
+        return of([{}]);
     }
 
     /**
